@@ -18,6 +18,10 @@ HALV_paintshop_opendialog = {
 	};
 	_typeOf = typeOf HALV_paintshop_vehicletopaint;
 	_txt = (gettext (configFile >> "cfgvehicles" >> _typeOf >> "displayName"));
+	if((locked HALV_paintshop_vehicletopaint) isEqualTo 2)exitWith
+	{
+		["Locked Vehicle! Cannot be painted",0,0.7,2,0] spawn bis_fnc_dynamictext;
+	};
 	if(count(HALV_paintshop_defaultsides) < 1)exitWith{
 		titleText [format["%1 can not be painted ...",_txt],"PLAIN DOWN"];
 		diag_log format["%1 could not be painted ...",_typeOf];
